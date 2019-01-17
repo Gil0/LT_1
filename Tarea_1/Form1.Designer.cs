@@ -37,10 +37,12 @@
             this.editor = new System.Windows.Forms.GroupBox();
             this.areaEditor = new System.Windows.Forms.RichTextBox();
             this.resultado = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.errores = new System.Windows.Forms.GroupBox();
             this.areaErrores = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.editor.SuspendLayout();
+            this.resultado.SuspendLayout();
             this.errores.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,6 +129,7 @@
             // 
             // resultado
             // 
+            this.resultado.Controls.Add(this.panel1);
             this.resultado.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resultado.ForeColor = System.Drawing.Color.White;
             this.resultado.Location = new System.Drawing.Point(478, 98);
@@ -135,6 +138,15 @@
             this.resultado.TabIndex = 5;
             this.resultado.TabStop = false;
             this.resultado.Text = "Resultado";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Location = new System.Drawing.Point(6, 25);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(436, 392);
+            this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // errores
             // 
@@ -173,6 +185,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.editor.ResumeLayout(false);
+            this.resultado.ResumeLayout(false);
             this.errores.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -190,6 +203,7 @@
         private System.Windows.Forms.RichTextBox areaEditor;
         private System.Windows.Forms.RichTextBox areaErrores;
         private System.Windows.Forms.Button botonNuevoArchivo;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

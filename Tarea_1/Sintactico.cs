@@ -189,6 +189,7 @@ namespace Tarea_1
                                                 return respuesta;
                                             }
                                             break;
+
                                         case "EliminarCara":
                                             //Console.Out.WriteLine("Selecciono EliminarCara");
                                             if (Analiza_Lexico.Lexema[i + 1] == "(")

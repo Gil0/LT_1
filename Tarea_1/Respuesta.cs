@@ -10,5 +10,6 @@ namespace Tarea_1
     {
         public Boolean estado;
         public String Mensaje;
+        public Carita carita;
     }
 }
