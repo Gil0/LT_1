@@ -98,37 +98,41 @@ namespace Tarea_1
                 respuesta.estado = false;
                 respuesta.Mensaje = "[•][Estado : Exito]\n" + "[Tipo : nulo] " + "\n[Descripcion]: No hay nada que analizar";
                 areaErrores.Text = respuesta.Mensaje;
-               
+                textBox1.Text = "hola";
+
             }
             else
             {                
                 respuesta = sintaxis.analizarSintaxis(areaEditor.Text);
                 areaErrores.Text = respuesta.Mensaje;
-                /*
-                Graphics g = panel1.CreateGraphics();
-                Carita c = respuesta.carita;
-                if (c.Modo == "feliz")
+                textBox1.Text = respuesta.carita.Nombre;
+                if (respuesta.carita != null)
                 {
-                    Pen p = new Pen(Color.Black);
-                    SolidBrush s = new SolidBrush(Color.Red);
-                    g.DrawEllipse(p, 20, 20, 50, 50);
-                    g.FillEllipse(s, 20, 20, 50, 50);
+                    Carita c = respuesta.carita;
+                    Graphics g = panel1.CreateGraphics();
+                    if (c.Modo == "feliz")
+                    {
+                        
+                        Pen p = new Pen(Color.Black);
+                        SolidBrush s = new SolidBrush(Color.Red);
+                        g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
+                        g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
+                    }
+                    if (c.Modo == "triste")
+                    {
+                        Pen p = new Pen(Color.Black);
+                        SolidBrush s = new SolidBrush(Color.Blue);
+                        g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
+                        g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
+                    }
+                    if (c.Modo == "enojada")
+                    {
+                        Pen p = new Pen(Color.Black);
+                        SolidBrush s = new SolidBrush(Color.Yellow);
+                        g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
+                        g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
+                    }
                 }
-                if (c.Modo == "triste")
-                {
-                    Pen p = new Pen(Color.Black);
-                    SolidBrush s = new SolidBrush(Color.Blue);
-                    g.DrawEllipse(p, 20, 20, 50, 50);
-                    g.FillEllipse(s, 20, 20, 50, 50);
-                }
-                if (c.Modo == "enojado")
-                {
-                    Pen p = new Pen(Color.Black);
-                    SolidBrush s = new SolidBrush(Color.Yellow);
-                    g.DrawEllipse(p, 20, 20, 50, 50);
-                    g.FillEllipse(s, 20, 20, 50, 50);
-                }
-                */
             }
                           
         }
@@ -174,6 +178,10 @@ namespace Tarea_1
         {
 
         }
-        
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

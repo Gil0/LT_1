@@ -59,11 +59,23 @@ namespace Tarea_1
                                                                                 {
                                                                                     if (Analiza_Lexico.Lexema[i + 11] == ")")
                                                                                     {
+                                                                                        int nombreToken = i + 8;
+                                                                                        int xToken = i + 2;
+                                                                                        int yToken = i + 4;
+                                                                                        int modoToken = i + 10;
+                                                                                        int radioToken = i + 6;
                                                                                         i = i + 11;
                                                                                         if (i == Analiza_Lexico.NoTokens - 2)
                                                                                         {
                                                                                             respuesta.estado = true;
                                                                                             respuesta.Mensaje = "[●][Estado: Exito] \nNo se han encontrado Errores";
+                                                                                            string nomC = Analiza_Lexico.Lexema[nombreToken];
+                                                                                            int xC = Convert.ToInt32(Analiza_Lexico.Lexema[xToken]);
+                                                                                            int yC = Convert.ToInt32(Analiza_Lexico.Lexema[yToken]);
+                                                                                            int radioC = Convert.ToInt32(Analiza_Lexico.Lexema[radioToken]);
+                                                                                            string modoC = Analiza_Lexico.Lexema[modoToken];
+                                                                                            Carita car = new Carita(nomC, xC, yC, radioC, modoC);
+                                                                                            respuesta.carita = car;
                                                                                             return respuesta;
                                                                                             //Console.Out.WriteLine("No se han encontrado Errores");
                                                                                         }
@@ -251,6 +263,7 @@ namespace Tarea_1
                                                         {
                                                             respuesta.estado = true;
                                                             respuesta.Mensaje = "[●][Estado: Exito] \nNo se han encontrado Errores";
+                                                            
                                                             return respuesta;
                                                             //Console.Out.WriteLine("No se han encontrado Errores");
                                                         }
