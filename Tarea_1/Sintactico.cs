@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Tarea_1
@@ -14,18 +15,13 @@ namespace Tarea_1
             Respuesta respuesta = new Respuesta();
             Analiza_Lexico.Inicia();
             Analiza_Lexico.Analiza(Codigo);
-            List<Carita> listacar = new List<Carita>();
-            respuesta.listacaras = listacar;
+            List<Instruccion> listain = new List<Instruccion>();
+            respuesta.listains = listain;
 
             if (Analiza_Lexico.NoTokens > 0)
             {
                 if (Analiza_Lexico.Lexema[0] == "Programa")
                 {
-
-
-
-
-
                     if (Analiza_Lexico.Token[1] == "id")
                     {
                         if (Analiza_Lexico.Lexema[2] == "Inicio")
@@ -73,7 +69,8 @@ namespace Tarea_1
                                                                                         int radioC = Convert.ToInt32(Analiza_Lexico.Lexema[radioToken]);
                                                                                         string modoC = Analiza_Lexico.Lexema[modoToken];
                                                                                         Carita car = new Carita(nomC, xC, yC, radioC, modoC, true);
-                                                                                        listacar.Add(car);
+                                                                                        Instruccion ins = new Instruccion("dibujar", 0, car);
+                                                                                        respuesta.listains.Add(ins);
                                                                                         i = i + 11;
                                                                                         if (i == Analiza_Lexico.NoTokens - 2) //solo una sentencia
                                                                                         {
@@ -262,6 +259,8 @@ namespace Tarea_1
                                                 {
                                                     if (Analiza_Lexico.Lexema[i + 3] == ")")
                                                     {
+                                                        int milliseconds = Convert.ToInt32(Analiza_Lexico.Lexema[i+2]);
+                                                        Thread.Sleep(milliseconds*1000);
                                                         i = i + 3;
                                                         if (i == Analiza_Lexico.NoTokens - 2)
                                                         {
