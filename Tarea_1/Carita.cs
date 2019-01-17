@@ -15,14 +15,16 @@ namespace Tarea_1
         private int y;
         private int radio;
         private string modo;
+        private bool existe = true;
 
-        public Carita(string nombre, int x, int y, int radio, string modo)
+        public Carita(string nombre, int x, int y, int radio, string modo, bool existe)
         {
             this.Nombre = nombre;
             this.X = x;
             this.Y = y;
             this.Radio = radio;
             this.Modo = modo;
+            this.Existe = existe;
         }
 
         public string Nombre { get => nombre; set => nombre = value; }
@@ -30,6 +32,7 @@ namespace Tarea_1
         public int Y { get => y; set => y = value; }
         public int Radio { get => radio; set => radio = value; }
         public string Modo { get => modo; set => modo = value; }
+        public bool Existe { get => existe; set => existe = value; }
 
         public void DibujarCara(Carita cara)
         {

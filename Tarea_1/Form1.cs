@@ -105,37 +105,56 @@ namespace Tarea_1
             {                
                 respuesta = sintaxis.analizarSintaxis(areaEditor.Text);
                 areaErrores.Text = respuesta.Mensaje;
-                textBox1.Text = respuesta.carita.Nombre;
-                if (respuesta.carita != null)
+                int contador = 0;
+                string nombre = "";
+                for (int j = 0; j < respuesta.listacaras.Count; j++)
                 {
-                    Carita c = respuesta.carita;
-                    Graphics g = panel1.CreateGraphics();
-                    if (c.Modo == "feliz")
+                    contador = 0;
+                    Carita c = respuesta.listacaras[j];
+                    nombre = respuesta.listacaras[j].Nombre;
+                    for (int n = 0; n < respuesta.listacaras.Count; n++)
                     {
-                        
-                        Pen p = new Pen(Color.Black);
-                        SolidBrush s = new SolidBrush(Color.Red);
-                        g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
-                        g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
+                        if (nombre == respuesta.listacaras[n].Nombre)
+                        {
+                            contador++;
+                        }
                     }
-                    if (c.Modo == "triste")
+                    if (contador <= 1)
                     {
-                        Pen p = new Pen(Color.Black);
-                        SolidBrush s = new SolidBrush(Color.Blue);
-                        g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
-                        g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
+                        areaErrores.Text = respuesta.Mensaje;
+                        Graphics g = panel1.CreateGraphics();
+                        if (c.Modo == "feliz")
+                        {
+
+                            Pen p = new Pen(Color.Black);
+                            SolidBrush s = new SolidBrush(Color.Red);
+                            g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
+                            g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
+                        }
+                        if (c.Modo == "triste")
+                        {
+                            Pen p = new Pen(Color.Black);
+                            SolidBrush s = new SolidBrush(Color.Blue);
+                            g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
+                            g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
+                        }
+                        if (c.Modo == "enojada")
+                        {
+                            Pen p = new Pen(Color.Black);
+                            SolidBrush s = new SolidBrush(Color.Yellow);
+                            g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
+                            g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
+                        }
                     }
-                    if (c.Modo == "enojada")
+                    else
                     {
-                        Pen p = new Pen(Color.Black);
-                        SolidBrush s = new SolidBrush(Color.Yellow);
-                        g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
-                        g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
+                        areaErrores.Text = "[x][Estado : Error]\n" + "[Tipo : Semántico] Ya existe una carita con el nombre " + nombre;
                     }
                 }
             }
-                          
         }
+                          
+    
 
         private void botonNuevoArchivo_Click(object sender, EventArgs e)
         {

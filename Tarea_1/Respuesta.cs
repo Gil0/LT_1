@@ -10,7 +10,7 @@ namespace Tarea_1
     {
         public Boolean estado;
         public String Mensaje;
-        public Carita carita;
+        public List<Carita> listacaras;
         public string respuesta2;
     }
 }

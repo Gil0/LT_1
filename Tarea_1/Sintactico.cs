@@ -14,6 +14,8 @@ namespace Tarea_1
             Respuesta respuesta = new Respuesta();
             Analiza_Lexico.Inicia();
             Analiza_Lexico.Analiza(Codigo);
+            List<Carita> listacar = new List<Carita>();
+            respuesta.listacaras = listacar;
 
             if (Analiza_Lexico.NoTokens > 0)
             {
@@ -33,6 +35,7 @@ namespace Tarea_1
                             {
                                 if (Analiza_Lexico.Token[i] == "PalabraReservada" && Analiza_Lexico.Lexema[i] != "Programa" && Analiza_Lexico.Lexema[i] != "Inicio" && Analiza_Lexico.Lexema[i] != "Fin")
                                 {
+                             
                                     switch (Analiza_Lexico.Lexema[i])
                                     {
                                         case "DibujarCara":
@@ -64,18 +67,19 @@ namespace Tarea_1
                                                                                         int yToken = i + 4;
                                                                                         int modoToken = i + 10;
                                                                                         int radioToken = i + 6;
+                                                                                        string nomC = Analiza_Lexico.Lexema[nombreToken];
+                                                                                        int xC = Convert.ToInt32(Analiza_Lexico.Lexema[xToken]);
+                                                                                        int yC = Convert.ToInt32(Analiza_Lexico.Lexema[yToken]);
+                                                                                        int radioC = Convert.ToInt32(Analiza_Lexico.Lexema[radioToken]);
+                                                                                        string modoC = Analiza_Lexico.Lexema[modoToken];
+                                                                                        Carita car = new Carita(nomC, xC, yC, radioC, modoC, true);
+                                                                                        listacar.Add(car);
                                                                                         i = i + 11;
-                                                                                        if (i == Analiza_Lexico.NoTokens - 2)
+                                                                                        if (i == Analiza_Lexico.NoTokens - 2) //solo una sentencia
                                                                                         {
                                                                                             respuesta.estado = true;
                                                                                             respuesta.Mensaje = "[●][Estado: Exito] \nNo se han encontrado Errores";
-                                                                                            string nomC = Analiza_Lexico.Lexema[nombreToken];
-                                                                                            int xC = Convert.ToInt32(Analiza_Lexico.Lexema[xToken]);
-                                                                                            int yC = Convert.ToInt32(Analiza_Lexico.Lexema[yToken]);
-                                                                                            int radioC = Convert.ToInt32(Analiza_Lexico.Lexema[radioToken]);
-                                                                                            string modoC = Analiza_Lexico.Lexema[modoToken];
-                                                                                            Carita car = new Carita(nomC, xC, yC, radioC, modoC);
-                                                                                            respuesta.carita = car;
+                                                                                     
                                                                                             return respuesta;
                                                                                             //Console.Out.WriteLine("No se han encontrado Errores");
                                                                                         }
