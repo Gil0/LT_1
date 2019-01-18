@@ -98,15 +98,63 @@ namespace Tarea_1
                 respuesta.estado = false;
                 respuesta.Mensaje = "[•][Estado : Exito]\n" + "[Tipo : nulo] " + "\n[Descripcion]: No hay nada que analizar";
                 areaErrores.Text = respuesta.Mensaje;
-               
+                textBox1.Text = "hola";
+
             }
             else
             {                
                 respuesta = sintaxis.analizarSintaxis(areaEditor.Text);
                 areaErrores.Text = respuesta.Mensaje;
+                int contador = 0;
+                string nombre = "";
+                for (int j = 0; j < respuesta.listacaras.Count; j++)
+                {
+                    contador = 0;
+                    Carita c = respuesta.listacaras[j];
+                    nombre = respuesta.listacaras[j].Nombre;
+                    for (int n = 0; n < respuesta.listacaras.Count; n++)
+                    {
+                        if (nombre == respuesta.listacaras[n].Nombre)
+                        {
+                            contador++;
+                        }
+                    }
+                    if (contador <= 1)
+                    {
+                        areaErrores.Text = respuesta.Mensaje;
+                        Graphics g = panel1.CreateGraphics();
+                        if (c.Modo == "feliz")
+                        {
+
+                            Pen p = new Pen(Color.Black);
+                            SolidBrush s = new SolidBrush(Color.Red);
+                            g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
+                            g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
+                        }
+                        if (c.Modo == "triste")
+                        {
+                            Pen p = new Pen(Color.Black);
+                            SolidBrush s = new SolidBrush(Color.Blue);
+                            g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
+                            g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
+                        }
+                        if (c.Modo == "enojada")
+                        {
+                            Pen p = new Pen(Color.Black);
+                            SolidBrush s = new SolidBrush(Color.Yellow);
+                            g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
+                            g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
+                        }
+                    }
+                    else
+                    {
+                        areaErrores.Text = "[x][Estado : Error]\n" + "[Tipo : Semántico] Ya existe una carita con el nombre " + nombre;
+                    }
+                }
             }
-                          
         }
+                          
+    
 
         private void botonNuevoArchivo_Click(object sender, EventArgs e)
         {
@@ -144,7 +192,15 @@ namespace Tarea_1
         {
             
         }
-        
-       
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

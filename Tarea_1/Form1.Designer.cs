@@ -37,10 +37,13 @@
             this.editor = new System.Windows.Forms.GroupBox();
             this.areaEditor = new System.Windows.Forms.RichTextBox();
             this.resultado = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.errores = new System.Windows.Forms.GroupBox();
             this.areaErrores = new System.Windows.Forms.RichTextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.editor.SuspendLayout();
+            this.resultado.SuspendLayout();
             this.errores.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,6 +130,7 @@
             // 
             // resultado
             // 
+            this.resultado.Controls.Add(this.panel1);
             this.resultado.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resultado.ForeColor = System.Drawing.Color.White;
             this.resultado.Location = new System.Drawing.Point(478, 98);
@@ -135,6 +139,15 @@
             this.resultado.TabIndex = 5;
             this.resultado.TabStop = false;
             this.resultado.Text = "Resultado";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Location = new System.Drawing.Point(6, 25);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(436, 392);
+            this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // errores
             // 
@@ -157,12 +170,22 @@
             this.areaErrores.TabIndex = 0;
             this.areaErrores.Text = "";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(76, 645);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(679, 42);
+            this.textBox1.TabIndex = 7;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(984, 650);
+            this.ClientSize = new System.Drawing.Size(984, 699);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.errores);
             this.Controls.Add(this.resultado);
             this.Controls.Add(this.editor);
@@ -173,8 +196,10 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.editor.ResumeLayout(false);
+            this.resultado.ResumeLayout(false);
             this.errores.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -190,6 +215,8 @@
         private System.Windows.Forms.RichTextBox areaEditor;
         private System.Windows.Forms.RichTextBox areaErrores;
         private System.Windows.Forms.Button botonNuevoArchivo;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
